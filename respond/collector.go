@@ -215,7 +215,7 @@ func (coll *Collector) sendPacket(conn *net.UDPConn, destination net.IP) {
 		Zone: conn.LocalAddr().(*net.UDPAddr).Zone,
 	}
 
-	if _, err := conn.WriteToUDP([]byte("GET nodeinfo statistics neighbours"), &addr); err != nil {
+	if _, err := conn.WriteToUDP([]byte("GET nodeinfo statistics neighbours domain_director"), &addr); err != nil {
 		log.WithField("address", addr.String()).Errorf("WriteToUDP failed: %s", err)
 	}
 }

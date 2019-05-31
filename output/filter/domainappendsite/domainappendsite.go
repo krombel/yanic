@@ -43,7 +43,8 @@ func (config *domainAppendSite) Apply(node *runtime.Node) *runtime.Node {
 				VPN:      nodeinfo.VPN,
 				Wireless: nodeinfo.Wireless,
 			},
-			Neighbours: node.Neighbours,
+			Neighbours:     node.Neighbours,
+			DomainDirector: node.DomainDirector,
 		}
 	}
 	return node

@@ -83,6 +83,17 @@ func (conn *Connection) InsertNode(node *runtime.Node) {
 		}
 
 	}
+
+	if domainDirector := node.DomainDirector; domainDirector != nil {
+		if domainDirector.Enabled {
+			tags.SetString("director.enabled", "true")
+			fields["director.switch_after"] = domainDirector.SwitchAfter
+			tags.SetString("director.target", domainDirector.Target)
+		} else {
+			tags.SetString("director.enabled", "false")
+		}
+	}
+
 	if neighbours := node.Neighbours; neighbours != nil {
 		// VPN Neighbours are Neighbours but includet in one protocol
 		vpn := 0

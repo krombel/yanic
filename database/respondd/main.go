@@ -51,9 +51,10 @@ func Connect(configuration map[string]interface{}) (database.Connection, error) 
 
 func (conn *Connection) InsertNode(node *runtime.Node) {
 	res := &data.ResponseData{
-		Nodeinfo:   node.Nodeinfo,
-		Statistics: node.Statistics,
-		Neighbours: node.Neighbours,
+		Nodeinfo:       node.Nodeinfo,
+		Statistics:     node.Statistics,
+		Neighbours:     node.Neighbours,
+		DomainDirector: node.DomainDirector,
 	}
 
 	writer := bufio.NewWriterSize(conn.conn, 8192)
